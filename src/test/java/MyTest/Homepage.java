@@ -17,6 +17,7 @@ public class Homepage {
     private final By LOGIN_IN_ERROR = By.xpath("//*[@id=\"center_column\"]/div[1]/ol/li");
     private final By REGISTER_ERROR = By.xpath("//*[@id=\"create_account_error\"]/ol/li");
     private final By REGISTER_FORM_ERROR = By.xpath("//*[@id=\"center_column\"]/div/ol");
+    private final By CART_WARNING_MSG = By.xpath("//*[@id=\"center_column\"]/p");
 
     @FindBy(className = "login")
     private WebElement signInButton;
@@ -29,6 +30,9 @@ public class Homepage {
 
     @FindBy(id = "submitAccount")
     private WebElement registerButton;
+
+    @FindBy(xpath = "//*[@id=\"header\"]/div[3]/div/div/div[3]/div/a")
+    private WebElement cartButton;
 
     private WebDriver webDriver;
 
@@ -57,6 +61,10 @@ public class Homepage {
         registerButton.click();
     }
 
+    public void clickCartButton(){
+        cartButton.click();
+    }
+
     public void fillFieldById(String fieldName , String msg){
         getField(By.id(fieldName)).sendKeys(msg);
     }
@@ -80,6 +88,10 @@ public class Homepage {
 
     public Optional<String> getRegisterFormError(){
         return getWebErrorMsg(REGISTER_FORM_ERROR);
+    }
+
+    public Optional<String> getCartWarningMsg(){
+        return getWebErrorMsg(CART_WARNING_MSG);
     }
 
     public Optional<String> getWebErrorMsg(By errorLocator){
