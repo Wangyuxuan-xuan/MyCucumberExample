@@ -41,6 +41,18 @@ public class Homepage {
     @FindBy(xpath = "//*[@id=\"searchbox\"]/button")
     private WebElement searchButton;
 
+    @FindBy(xpath = "//*[@id=\"add_to_cart\"]/button/span")
+    private WebElement addToCartButton;
+
+    @FindBy(xpath = "//*[@id=\"homefeatured\"]/li[1]/div/div[1]/div/a[1]/img")
+    private WebElement shortSleeveShirtImage;
+
+    @FindBy(xpath = "//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a")
+    private WebElement proceedToCheckOutButton;
+
+    @FindBy(xpath = "//*[@id=\"1_1_0_0\"]/i")
+    private WebElement removeItemButton;
+
     private WebDriver webDriver;
 
     public Homepage(WebDriver webDriver) {
@@ -74,6 +86,23 @@ public class Homepage {
 
     public void clickSearchButton(){
         searchButton.click();
+    }
+
+    public void clickAddToCartButton() throws InterruptedException {
+        addToCartButton.click();
+        Thread.sleep(10000);
+    }
+
+    public void clickShortSleeveShirtImage(){
+        shortSleeveShirtImage.click();
+    }
+
+    public void clickProceedToCheckOutButton(){
+        proceedToCheckOutButton.click();
+    }
+
+    public void clickRemoveItemButton(){
+        removeItemButton.click();
     }
 
     public void fillFieldById(String fieldName , String msg){

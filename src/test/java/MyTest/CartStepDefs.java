@@ -1,5 +1,6 @@
 package MyTest;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
@@ -21,5 +22,31 @@ public class CartStepDefs extends AbstractStepDefs{
             Assert.assertEquals(msg,errorMessage.get());
 
         }else fail();
+    }
+
+    @Given("the item {string} is added to cart")
+    public void theItemIsAddedToCart(String arg0) throws InterruptedException {
+        homepage.clickShortSleeveShirtImage();
+        homepage.clickAddToCartButton();
+    }
+
+    @Then("the item {string} is listed in cart")
+    public void theItemIsListedInCart(String arg0) {
+        Assert.assertEquals(true,homepage.checkCartItems(arg0));
+    }
+
+    @Given("the item is removed form cart")
+    public void theItemIsRemovedFormCart() {
+        homepage.clickRemoveItemButton();
+    }
+
+    @And("the proceed to check out button is clicked")
+    public void theProceedToCheckOutButtonIsClicked() {
+        homepage.clickProceedToCheckOutButton();
+    }
+
+    @Then("the item {string} is not listed in cart")
+    public void theItemIsNotListedInCart(String arg0) {
+        Assert.assertEquals(false,homepage.checkCartItems(arg0));
     }
 }

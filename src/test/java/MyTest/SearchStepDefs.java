@@ -35,12 +35,13 @@ public class SearchStepDefs extends AbstractStepDefs{
     }
 
     @Then("the related item {string} is listed in search")
-    public Boolean theRelatedItemIsListedInSearch(String name) {
-        return homepage.searchRelatedItem(name);
+    public void theRelatedItemIsListedInSearch(String name) {
+        Assert.assertEquals(true,homepage.searchRelatedItem(name));
+
     }
 
     @Then("the related unique item {string} is listed in search")
-    public Boolean theRelatedSingleItemIsListedInSearch(String name) {
-        return homepage.searchUniqueItem(name);
+    public void theRelatedSingleItemIsListedInSearch(String name) {
+        Assert.assertEquals(true,homepage.searchUniqueItem(name));
     }
 }
