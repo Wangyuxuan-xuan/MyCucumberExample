@@ -49,4 +49,21 @@ public class CartStepDefs extends AbstractStepDefs{
     public void theItemIsNotListedInCart(String arg0) {
         Assert.assertEquals(false,homepage.checkCartItems(arg0));
     }
+
+    @Given("the item {string} is added to cart with quantity of {string}")
+    public void theItemIsAddedToCartWithQuantityOf(String arg0, String quantity) throws InterruptedException {
+        homepage.clickShortSleeveShirtImage();
+        homepage.fillFieldById("quantity_wanted",quantity);
+        homepage.clickAddToCartButton();
+    }
+
+
+    @Then("the {string} error message is shown in the adding page")
+    public void theErrorMessageIsShownInTheAddingPage(String msg) {
+        Optional<String> errorMessage = homepage.getAddToCartWarningMsg();
+        if (errorMessage.isPresent()){
+            Assert.assertEquals(msg,errorMessage.get());
+
+        }else fail();
+    }
 }

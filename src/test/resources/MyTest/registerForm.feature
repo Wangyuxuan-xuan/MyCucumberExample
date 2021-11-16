@@ -20,9 +20,6 @@ Feature:  Register Form functionality test
 
     And the Alias Field is filled with "someAddr" in register form
 
-    #And the Zip Code Field is filled with '<parameter>' in register form
-    #And the Password is filled with '<parameter>' in register form
-
   Scenario Outline: Test password field
     Given the '<passwordField>' is filled with '<passwdParameter>' in register form
     And the Zip Code Field is filled with "00000" in register form

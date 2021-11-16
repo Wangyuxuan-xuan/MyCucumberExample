@@ -23,3 +23,7 @@ Feature: cart functionality test
     When the Cart button is clicked
     Then the item "Faded Short Sleeve T-shirts" is not listed in cart
 
+  Scenario: cart item null quantity test
+    Given the item "Faded Short Sleeve T-shirts" is added to cart with quantity of "0"
+    Then the "Null quantity." error message is shown in the adding page
+

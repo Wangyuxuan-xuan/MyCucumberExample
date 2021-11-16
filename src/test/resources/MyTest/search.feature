@@ -10,9 +10,9 @@ Feature:  search feature functionality test
     When the search button is clicked
     Then the '<msg>' error message is shown in search
     Examples:
-      | searchField         | parameter         | msg                        |
-      | search_query_top        |                   | Please enter a search keyword     |
-      | search_query_top        | unknown item | No results were found for your search "unknown item"     |
+      | searchField             | parameter         | msg                                                       |
+      | search_query_top        |                   | Please enter a search keyword                             |
+      | search_query_top        | unknown item      | No results were found for your search "unknown item"      |
 
     Scenario: Empty search test with Enter key
       Given the "search_query_top" is filled with "" in search field

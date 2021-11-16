@@ -22,6 +22,7 @@ public class Homepage {
     private final By REGISTER_FORM_ERROR = By.xpath("//*[@id=\"center_column\"]/div/ol");
     private final By CART_WARNING_MSG = By.xpath("//*[@id=\"center_column\"]/p");
     private final By SEARCH_WARNING_MSG = By.xpath("//*[@id=\"center_column\"]/p");
+    private final By ADD_TO_CART_WARNING_MSG = By.xpath("//*[@id=\"product\"]/div[2]/div/div/div/div/p");
 
     @FindBy(className = "login")
     private WebElement signInButton;
@@ -106,6 +107,7 @@ public class Homepage {
     }
 
     public void fillFieldById(String fieldName , String msg){
+        getField(By.id(fieldName)).clear();
         getField(By.id(fieldName)).sendKeys(msg);
     }
 
@@ -155,6 +157,7 @@ public class Homepage {
         return false;
     }
 
+
     public WebElement getField(By locator){
         return webDriver.findElement(locator);
     }
@@ -177,6 +180,10 @@ public class Homepage {
 
     public Optional<String> getSearchWarningMsg(){
         return getWebErrorMsg(SEARCH_WARNING_MSG);
+    }
+
+    public Optional<String> getAddToCartWarningMsg(){
+        return getWebErrorMsg(ADD_TO_CART_WARNING_MSG);
     }
 
     public Optional<String> getWebErrorMsg(By errorLocator){
